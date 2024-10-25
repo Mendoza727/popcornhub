@@ -1,0 +1,1 @@
+export * from './movies/NowPlaying.use-case'
