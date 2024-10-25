@@ -3,9 +3,18 @@ import { MovieDBMoviesResponse } from "../../../infrastructure";
 import { MovieMapper } from "../../../infrastructure/mappers/movie.mapper";
 import { Movie } from "../../entities/Movie.entity";
 
-export const MovieTopRatedUseCase = async(  fetcher: HttpAdpater ): Promise<Movie[]> => {
+interface Options {
+    page?: number,
+    limit?: number
+}
+
+export const MovieTopRatedUseCase = async(fetcher: HttpAdpater, options?: Options): Promise<Movie[]> => {
     try {
-        const TopRated = await fetcher.get<MovieDBMoviesResponse>('/top_rated');
+        const TopRated = await fetcher.get<MovieDBMoviesResponse>('/top_rated', {
+            params: {
+                page: options?.page ?? 1
+            }
+        });
 
         return TopRated.results.map( MovieMapper.fromMovieDBResultToEntity );
     } catch (error) {
