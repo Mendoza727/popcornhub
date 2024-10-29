@@ -1,11 +1,20 @@
 import React from "react";
-import { ImageBackground, Text, View } from "react-native";
+import {
+  ImageBackground,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useMovies } from "../../hooks/useMovies";
-import { GlobalColors } from "../../config/theme/app-theme";
+import { GlobalColors, LightGlobalColors } from "../../config/theme/app-theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { MoviesPosterCarousel } from "../../components/MoviesPosterCarousel";
-import { HorizontalCarousel } from "../../components/HorizontalCarousel";
+
+import { LinearGradient } from "expo-linear-gradient";
+import { LoadingComponent } from "../../components/LoadingComponent";
+import { MoviesPosterCarousel } from "../../components/MoviesPosterCarouselComponent";
+import { HorizontalCarouselComponent } from "../../components/HorizontalCarouselComponent";
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -19,11 +28,11 @@ export const HomeScreen = () => {
     popularNextPage,
     nowPlayingNextPage,
     topRatedNextPage,
-    upCommingNextPage
+    upCommingNextPage,
   } = useMovies();
 
   if (isLoading) {
-    return <Text>Cargando...</Text>;
+    return <LoadingComponent />;
   }
 
   return (
@@ -42,26 +51,26 @@ export const HomeScreen = () => {
           />
 
           {/* Popular Movies */}
-          <HorizontalCarousel
+          <HorizontalCarouselComponent
             movies={popularResults}
             title="Populares"
-            colorTitle={GlobalColors.richBlack}
+            colorTitle={GlobalColors.darkMidnightBlue}
             loadNextPage={popularNextPage}
           />
 
           {/* topRated Movies */}
-          <HorizontalCarousel
+          <HorizontalCarouselComponent
             movies={topRatedResults}
             title="Mejor Calificadas"
-            colorTitle={GlobalColors.saffronMango}
+            colorTitle={GlobalColors.darkMidnightBlue}
             loadNextPage={topRatedNextPage}
           />
 
           {/* Popular Movies */}
-          <HorizontalCarousel
+          <HorizontalCarouselComponent
             movies={upcomingResults}
             title="Proximamente"
-            colorTitle={GlobalColors.redSalsa}
+            colorTitle={GlobalColors.darkMidnightBlue}
             loadNextPage={upCommingNextPage}
           />
         </ImageBackground>

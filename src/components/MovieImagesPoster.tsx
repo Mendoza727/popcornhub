@@ -29,7 +29,7 @@ export const MovieImagesPoster = ({
         paddingHorizontal: 2,
         opacity: pressed ? 0.89 : 1,
       })}
-      onPress={() => navigate("Details", { MovieId: movie.id })}
+      onPress={() => navigate("Details", { MovieId: Number(movie.id) })}
     >
       <View
         style={ GlobalStyles.imageContainer }  

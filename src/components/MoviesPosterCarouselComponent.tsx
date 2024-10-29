@@ -6,21 +6,17 @@ import {
   View,
 } from "react-native";
 import { Movie } from "../core/entities/Movie.entity";
-import { GlobalColors } from "../config/theme/app-theme";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { MovieImagesPoster } from "./MovieImagesPoster";
-
 interface Props {
   movies: Movie[];
-  title?: string;
-  colorTitle?: string;
+  height?: number;
   loadNextPage?: () => void;
 }
 
-export const HorizontalCarousel = ({
+export const MoviesPosterCarousel = ({
+  height = 440,
   movies,
-  title,
-  colorTitle,
   loadNextPage,
 }: Props) => {
   const isLoading = useRef(false);
@@ -43,34 +39,14 @@ export const HorizontalCarousel = ({
   };
 
   return (
-    <View
-      style={{
-        height: title ? 260 : 220,
-      }}
-    >
-      {title && (
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            marginLeft: 10,
-            marginHorizontal: 10,
-            color: colorTitle ? colorTitle : GlobalColors.darkMidnightBlue,
-          }}
-        >
-          {title}
-        </Text>
-      )}
-
+    <View style={{ height }}>
       <FlatList
         style={{
           marginTop: 10,
           marginBottom: 10,
         }}
         data={movies}
-        renderItem={({ item }) => (
-          <MovieImagesPoster movie={item} width={160} height={220} />
-        )}
+        renderItem={({ item }) => <MovieImagesPoster movie={item} />}
         keyExtractor={(item) => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
