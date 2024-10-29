@@ -25,4 +25,12 @@ export class AxiosAdapter implements HttpAdpater {
       throw new Error(`Error fetching get url: ${url}`);
     }
   }
+
+  async getVideos<T>(url: string, options?: Record<any, unknown>): Promise<T> {
+    try {
+      const { data } = await this.axiosInstance.get<T>(url, options);
+      return data;
+    } catch (error) {
+      throw new Error(`Error fetching get url: ${url}`);    }
+  }
 }
