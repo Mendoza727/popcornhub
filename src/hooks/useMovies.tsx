@@ -50,7 +50,9 @@ export const useMovies = () => {
     } catch (error) {
       console.error("Error al cargar películas:", error);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 200);
     }
   };
 
