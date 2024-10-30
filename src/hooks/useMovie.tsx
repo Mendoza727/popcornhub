@@ -48,7 +48,9 @@ export const useMovie = (idMovie: number) => {
     } catch (error) {
       throw new Error("Error fetching hook useMovie: " + error);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 200);
     }
   };
 
