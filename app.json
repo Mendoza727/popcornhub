@@ -1,28 +1,41 @@
-{
-  "expo": {
-    "name": "PopcornHub",
-    "slug": "PopcornHub",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/faviconMovie.jpg",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/faviconMovie.jpg",
-        "backgroundColor": "#ffffff"
+    {
+      "expo": {
+        "name": "PopcornHub",
+        "slug": "PopcornHub",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/faviconMovie.jpg",
+        "userInterfaceStyle": "light",
+        "splash": {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        },
+        "ios": {
+          "supportsTablet": true,
+          "bundleIdentifier": "com.juanitocs.PopcornHub"
+        },
+        "android": {
+          "adaptiveIcon": {
+            "foregroundImage": "./assets/faviconMovie.jpg",
+            "backgroundColor": "#ffffff"
+          },
+          "package": "com.juanitocs.PopcornHub"
+        },
+        "web": {
+          "favicon": "./assets/faviconMovie.jpg"
+        },
+        "permissions": [
+          "CAMERA",
+          "MEDIA_LIBRARY",
+          "AUDIO_RECORDING",
+          "LOCATION", 
+          "INTERNET"
+        ],
+        "extra": {
+          "eas": {
+            "projectId": "811620e2-6552-408b-b6e5-6ba866ff0d51"
+          }
+        }
       }
-    },
-    "web": {
-      "favicon": "./assets/faviconMovie.jpg"
-    },
-    "permissions": ["CAMERA", "MEDIA_LIBRARY", "AUDIO_RECORDING"]
-  }
-}
+    }
